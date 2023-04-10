@@ -10,20 +10,16 @@
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
-  - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
+- [👥 Authors](#author)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [Credits](#credits-a-name"credits")
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
 - [📝 License](#license)
 
-# 📖 Shopping <a name="about-project"></a>
+# 📖 Helpjuice Notion <a name="about-project"></a>
 
 > This project is a web app for generating text in a blog post format. It includes a form for inputting text and allows the user to generate h1 tags. The app also includes a feature for editing what has written by a user. It is built using HTML, CSS, and JavaScript.
 
@@ -174,7 +170,7 @@ Give a ⭐️ if you like this project!
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 - Thanks to [Helpjuice](https://helpjuice.com/) for giving this opportunity.
-- Thank to [Emil](https://www.linkedin.com/in/emilhajric/) for reviewing my profile.
+- Thank to [Emil](https://www.linkedin.com/in/emilhajric/) for reviewing my profiles.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
