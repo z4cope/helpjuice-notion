@@ -65,9 +65,15 @@ ul {
 /* Popup selection window */
 #selection-window {
   width: 20%;
+  min-height: 50vh;
   border-radius: 5px;
   border: 1px solid #cecece;
   box-shadow: rgba(87, 73, 109, 0.12) 2px 0px 22px 0px;
+  position: absolute;
+  left: 15%;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.3s ease;
 }
 
 .window-head {
@@ -100,6 +106,8 @@ ul {
   gap: 0.5rem;
   padding: 0.2rem 0.8rem;
   cursor: pointer;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .select-item:hover {
@@ -107,5 +115,5 @@ ul {
 }
 
 .select-item img {
-  width: 6%;
+  width: 8%;
 }
