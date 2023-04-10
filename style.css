@@ -1,9 +1,15 @@
+/* General styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
+/* Breadcrumbs */
 .breadcrumbs {
   width: 100%;
   padding: 1rem;
@@ -41,4 +47,65 @@
 
 .breadcrumbs span:last-child {
   color: #333;
+}
+
+/* Text generator */
+#blog-text-parent {
+  width: 70%;
+  margin: auto;
+  padding-top: 5rem;
+}
+
+#text-generator input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+/* Popup selection window */
+#selection-window {
+  width: 20%;
+  border-radius: 5px;
+  border: 1px solid #cecece;
+  box-shadow: rgba(87, 73, 109, 0.12) 2px 0px 22px 0px;
+}
+
+.window-head {
+  padding: 0.5rem;
+}
+
+.window-head h2 {
+  font-size: 1.2rem;
+}
+
+.window-head p {
+  color: #a7a7a7;
+  font-size: 0.9rem;
+}
+
+.window-body h3 {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.window-body span {
+  background-color: #0051ff;
+  padding: 0.1rem;
+  border-radius: 2px;
+  color: #fff;
+}
+
+.select-item {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+}
+
+.select-item:hover {
+  background-color: #f2f2f2;
+}
+
+.select-item img {
+  width: 6%;
 }

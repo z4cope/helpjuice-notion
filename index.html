@@ -8,25 +8,54 @@
     <title>Helpjuice Notion</title>
   </head>
   <body>
+    <section class="breadcrumbs">
+      <img
+        class="arrow-right"
+        src="./images/MaterialSymbolsKeyboardDoubleArrowRight.svg"
+      />
+      <img
+        class="book-icon"
+        src="./images/TablerBook.svg"
+        alt="main page link"
+      />
+      <a href="#">Main</a>
+      <span>/</span>
+      <a href="#">Getting started</a>
+      <span>/</span>
+      <a href="#">Front-end developer test project</a>
+    </section>
     <main>
-      <section class="breadcrumbs">
-        <img
-          class="arrow-right"
-          src="./images/MaterialSymbolsKeyboardDoubleArrowRight.svg"
-        />
-        <img
-          class="book-icon"
-          src="./images/TablerBook.svg"
-          alt="main page link"
-        />
-        <a href="#">Main</a>
-        <span>/</span>
-        <a href="#">Getting started</a>
-        <span>/</span>
-        <a href="#">Front-end developer test project</a>
+      <div id="selection-window">
+        <div class="window-head">
+          <h2>Add blocks</h2>
+          <p>Keep typing to filter, or escape to exit</p>
+        </div>
+        <div class="window-body">
+          <h3>Filtering keyword <span id="keyword">1</span></h3>
+          <ul class="selectors">
+            <li class="select-item">
+              <img
+                src="./images/TeenyiconsTextSolid.svg"
+                alt="Text type heading"
+              />
+              <div>
+                <h4>Heading 1</h4>
+                <p>Shortcut: type # + space</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section id="blog-text-parent">
+        <form id="text-generator">
+          <input
+            type="text"
+            placeholder="Type / for blocks, @ to link docs or people"
+          />
+        </form>
       </section>
-
-      <section id="blog-text-parent"></section>
     </main>
+
+    <script src="./index.js"></script>
   </body>
 </html>
