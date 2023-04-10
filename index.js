@@ -25,7 +25,7 @@ const hideItem = (element) => {
 };
 // Prevents the editable field from going to a new line.
 const handleH1Keyup = (e) => {
-  if (e.key === "Enter") {
+  if (e.key === "Enter" || e.keyCode === 13) {
     e.preventDefault();
     currentH1.blur(); // Remove focus from the h1.
     revealItem(textGeneratorForm);
