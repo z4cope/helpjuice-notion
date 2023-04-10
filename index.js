@@ -24,7 +24,7 @@ const hideItem = (element) => {
   element.style.display = "none";
 };
 // Prevents the editable field from going to a new line.
-const handleH1Keydown = (e) => {
+const handleH1Keyup = (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     currentH1.blur(); // Remove focus from the h1.
@@ -69,7 +69,7 @@ selectItem.forEach((select) => {
         newHeadingOne.setAttribute("spellcheck", "true");
         newHeadingOne.setAttribute("contenteditable", "true");
         newHeadingOne.setAttribute("autofocus", ""); // add autofocus attribute.
-        newHeadingOne.addEventListener("keydown", handleH1Keydown);
+        newHeadingOne.addEventListener("keyup", handleH1Keyup);
         currentH1 = newHeadingOne;
         selectedItemParent.appendChild(newHeadingOne);
         // wait 100ms before calling the focus() method.

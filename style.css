@@ -136,3 +136,33 @@ ul {
 .select-item img {
   width: 8%;
 }
+
+@media screen and (max-width: 800px) {
+  .arrow-right {
+    width: 5%;
+  }
+
+  .book-icon {
+    width: 5%;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .breadcrumbs {
+    padding: 0.2rem;
+  }
+
+  .arrow-right,
+  .book-icon {
+    width: 7%;
+  }
+
+  #blog-text-parent {
+    width: 95%;
+  }
+
+  #selection-window {
+    width: 95%;
+    left: 2.5%;
+  }
+}
