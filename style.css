@@ -70,13 +70,85 @@ ul {
   margin-bottom: 1rem;
 }
 
-.head-1 {
+#selected-item-parent h1,
+p {
   outline: none;
+  cursor: pointer;
 }
 
-.head-1:empty::before {
+#selected-item-parent h1:empty::before {
   content: "Heading 1";
   color: #cecece;
+}
+
+#selected-item-parent p:empty::before {
+  content: "Paragraph";
+  color: #cecece;
+}
+
+.content-container {
+  display: flex;
+  position: relative;
+}
+
+.content-container .option-menu-icon {
+  opacity: 0.3;
+  width: 55%;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 0.1rem;
+}
+
+.content-container:hover .option-menu-icon {
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: all;
+}
+
+.option-menu-icon:hover {
+  background-color: #cecece;
+  border-radius: 2px;
+}
+
+.option-menu {
+  width: 12vw;
+  min-height: 30vh;
+  border-radius: 5px;
+  border: 1px solid #cecece;
+  box-shadow: rgba(87, 73, 109, 0.12) 2px 0px 22px 0px;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: -15vh;
+  left: -18%;
+  background: #fff;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  padding: 0.3rem;
+  border-radius: 5px;
+}
+
+.option-item img {
+  opacity: 0.8;
+  width: 6%;
+}
+
+.option-item:hover {
+  background-color: #f2f2f2;
+}
+
+.option-right-arrow {
+  margin-left: auto;
 }
 
 /* Popup selection window */
