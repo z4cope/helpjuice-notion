@@ -67,6 +67,7 @@ const handleTagsMenuReveal = () => {
     tagOption.addEventListener("mouseenter", () => {
       const currentTagsList = tagsList[index];
       currentTagsList.classList.add("tags-list-reveal");
+      revealItem(currentTagsList);
     });
   });
 };
@@ -100,6 +101,7 @@ const onClickTagOption = (e, index) => {
     });
     currentTag.parentNode.replaceChild(newTag, currentTag);
     hideItem(e.target.closest(".option-menu"));
+    hideItem(e.target.closest(".option-menu").querySelector(".tags-list"));
   }
 };
 
@@ -114,6 +116,7 @@ document.addEventListener("click", (event) => {
       !event.target.classList.contains("option-menu-icon")
     ) {
       hideItem(optionMenu);
+      hideItem(optionMenu.querySelector(".tags-list"));
     }
   });
 });
