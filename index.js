@@ -26,7 +26,7 @@ const hideItem = (element) => {
 };
 
 // Prevents the editable field from going to a new line.
-const handleH1Keyup = (e) => {
+const handleTagKeyup = (e) => {
   if (e.key === "Enter" || e.keyCode === 13) {
     e.preventDefault();
     if (currentH1) {
@@ -39,34 +39,35 @@ const handleH1Keyup = (e) => {
 };
 
 const handleOptionsMenuReveal = () => {
-  const optionsMenuIcon = document.querySelector(".option-menu-icon");
-  optionsMenuIcon.addEventListener("click", (e) => {
-    const optionsMenu = document.querySelector(".option-menu");
-    revealItem(optionsMenu);
+  const optionsMenuIcon = document.querySelectorAll(".option-menu-icon");
+  optionsMenuIcon.forEach((menu) => {
+    menu.addEventListener("click", (e) => {
+      revealItem(e.target.nextElementSibling);
+    });
   });
 };
 
 const handleDeleteItem = () => {
-  const deleteItem = document.querySelector("#delete-item");
-
-  deleteItem.addEventListener("click", (e) => {
-    const elementParent = e.target.parentElement.parentElement.parentElement;
-    elementParent.remove();
-    revealItem(textGeneratorForm);
-    textInput.focus(); // Bringing the focus back to the form field.
+  const deleteItem = document.querySelectorAll(".delete-item");
+  deleteItem.forEach((delItem) => {
+    delItem.addEventListener("click", (e) => {
+      const elementParent = e.target.parentElement.parentElement.parentElement;
+      elementParent.remove();
+      revealItem(textGeneratorForm);
+      textInput.focus(); // Bringing the focus back to the form field.
+    });
   });
 };
 
-handleTagsMenuReveal = () => {
-  const tagsOptionsSelect = document.querySelector("#turn-into");
-  const tagsList = document.querySelector(".tags-list");
-  const handleClickOrHover = () => {
-    tagsList.classList.add("tags-list-reveal");
-  };
-  tagsOptionsSelect.addEventListener("click", handleClickOrHover);
-  tagsOptionsSelect.addEventListener("mouseenter", handleClickOrHover);
-  tagsList.addEventListener("mouseleave", () => {
-    tagsList.classList.remove("tags-list-reveal");
+const handleTagsMenuReveal = () => {
+  const tagsOptionsSelect = document.querySelectorAll(".turn-into");
+  const tagsList = document.querySelectorAll(".tags-list");
+
+  tagsOptionsSelect.forEach((tagOption, index) => {
+    tagOption.addEventListener("mouseenter", () => {
+      const currentTagsList = tagsList[index];
+      currentTagsList.classList.add("tags-list-reveal");
+    });
   });
 };
 
@@ -74,26 +75,48 @@ handleTagChange = () => {
   const tagOptions = document.querySelectorAll(".tag-option");
 
   tagOptions.forEach((tag, index) => {
-    tag.addEventListener("click", (e) => {
-      const tagType = e.target.attributes.dataset.value;
-      const currentTag =
-        e.target.parentElement.parentElement.parentElement.parentElement
-          .parentElement.parentElement.children[1];
-
-      const newTag = document.createElement(tagType);
-      newTag.innerHTML = currentTag.innerHTML;
-      newTag.classList.add(tagType + "-" + index);
-      newTag.setAttribute("spellcheck", "true");
-      newTag.setAttribute("contenteditable", "true");
-      newTag.setAttribute("autofocus", "");
-      newTag.addEventListener("keyup", handleH1Keyup);
-      currentTag.parentNode.replaceChild(newTag, currentTag);
-
-      const optionsMenu = document.querySelector(".option-menu");
-      hideItem(optionsMenu);
-    });
+    tag.addEventListener("click", (e) => onClickTagOption(e, index));
   });
 };
+
+const onClickTagOption = (e, index) => {
+  const tagType = e.currentTarget.attributes.dataset.value;
+  const currentTag = e.currentTarget.closest(".content-container").children[1];
+
+  if (currentTag) {
+    const newTag = document.createElement(tagType);
+    newTag.innerHTML = currentTag.innerHTML;
+    newTag.classList.add(tagType + "-" + index);
+    newTag.setAttribute("spellcheck", "true");
+    newTag.setAttribute("contenteditable", "true");
+    newTag.setAttribute("autofocus", "");
+    newTag.addEventListener("keyup", (event) => {
+      if (event.key === "Enter" || event.keyCode === 13) {
+        event.preventDefault();
+        newTag.blur();
+        revealItem(textGeneratorForm);
+        textInput.focus();
+      }
+    });
+    currentTag.parentNode.replaceChild(newTag, currentTag);
+    hideItem(e.target.closest(".option-menu"));
+  }
+};
+
+// Listen for the click event on the document object
+document.addEventListener("click", (event) => {
+  const optionMenus = document.querySelectorAll(".option-menu");
+
+  optionMenus.forEach((optionMenu) => {
+    const isClickInsideContextMenu = optionMenu.contains(event.target);
+    if (
+      !isClickInsideContextMenu &&
+      !event.target.classList.contains("option-menu-icon")
+    ) {
+      hideItem(optionMenu);
+    }
+  });
+});
 
 // Event Listeners.
 // Prevent the page from refreshing after submitting the form.
@@ -138,11 +161,11 @@ selectItem.forEach((select, index) => {
     <div>
       <img class="option-menu-icon" src="./images/CiHamburger.svg" />
       <div class="option-menu">
-        <div class="option-item" id="delete-item">
+        <div class="option-item delete-item">
           <img src="./images/BiTrash3.svg" />
           <div>Delete</div>
         </div>
-        <div class="option-item" id="turn-into">
+        <div class="option-item turn-into">
           <img src="./images/change.svg" />
           <div>Turn into</div>
           <img class="option-right-arrow" src="./images/right-arrow.svg" />
@@ -166,7 +189,7 @@ selectItem.forEach((select, index) => {
     newTag.setAttribute("spellcheck", "true");
     newTag.setAttribute("contenteditable", "true");
     newTag.setAttribute("autofocus", "");
-    newTag.addEventListener("keyup", handleH1Keyup);
+    newTag.addEventListener("keyup", handleTagKeyup);
 
     // Append the new tag to the parent element
     newContentContainer.appendChild(newTag);

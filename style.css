@@ -124,6 +124,8 @@ p {
   bottom: -15vh;
   left: -18%;
   background: #fff;
+  opacity: 0;
+  z-index: -1;
 }
 
 .option-item {
